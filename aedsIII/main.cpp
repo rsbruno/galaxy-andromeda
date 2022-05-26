@@ -21,7 +21,5 @@ int main(void)
             myfile >> posY;
             cout << index << ": " << posX << " - " << posY << endl;
         }
-
-        
     }
 }
