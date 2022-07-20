@@ -5,43 +5,56 @@
 
 using namespace std;
 
+vector<vector<int>> adjacencyMatrix;
+
 int main(void)
 {
     ifstream myfile;
-    ifstream myfile2;
-    int maxLines = 0;
+    int maxLines = 0, size = 0;
+    bool isFirstLine = true;
 
     myfile.open("att48.txt");
-    if (myfile.is_open())
-        while (myfile.peek() != EOF)
-        {
-            string line;
-            getline(myfile, line);
-            maxLines++;
-        }
-
-    int adjacencyMatrix[maxLines][maxLines];
-
-    myfile2.open("att48.txt");
-    if (myfile2.is_open())
+    if (myfile.good())
     {
-        string mychar, index, posX, posY;
-        int indexLine = 0;
-        while (myfile2)
+        while (myfile)
         {
-            int indexColumn = 0;
-            myfile2 >> index;
-            myfile2 >> posX;
-            myfile2 >> posY;
+            if (isFirstLine)
+            {
+                string sLine;
+                getline(myfile, sLine);
+                size = stoi(sLine);
 
-            adjacencyMatrix[indexLine][indexColumn++] = stoi(index);
-            adjacencyMatrix[indexLine][indexColumn++] = stoi(posX);
-            adjacencyMatrix[indexLine++][indexColumn++] = stoi(posY);
+                adjacencyMatrix.resize(size);
+
+                for (auto &row : adjacencyMatrix)
+                {
+                    row.resize(size);
+                }
+                isFirstLine = false;
+            }
+            else
+            {
+                int posX, posY, weight;
+
+                int indexColumn = 0;
+                myfile >> posX;
+                myfile >> posY;
+                myfile >> weight;
+
+                adjacencyMatrix[posX][posY] = weight;
+                adjacencyMatrix[posY][posX] = weight;
+            }
         }
     }
 
-    for (int i = 0; i < maxLines; i++)
+    myfile.close();
+
+    for (int i = 0; i < size; i++)
     {
-        cout << adjacencyMatrix[i][0] << ": " << adjacencyMatrix[i][1] << " " << adjacencyMatrix[i][2] << endl;
+        for (int j = 0; j < size; j++)
+        {
+            cout << adjacencyMatrix[i][j] << "\t";
+        }
+        cout << endl;
     }
 }
