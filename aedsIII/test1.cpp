@@ -7,7 +7,7 @@ int maxPath[3] = {-1};
 queue<int> biggestParent;
 
 
-void print_queue(queue<int> q)
+void showOutputFormated(queue<int> q)
 {
     queue<int> temp = q;
     while (!temp.empty()) {
@@ -27,11 +27,11 @@ int minDistance(int dist[], bool sptSet[])
     return min_index;
 }
 
-void printPath(int parent[], int j)
+void mountPath(int parent[], int j)
 {
     if (parent[j] == -1)
         return;
-    printPath(parent, parent[j]);
+    mountPath(parent, parent[j]);
     biggestParent.push(j);
 }
 
@@ -48,7 +48,7 @@ void printSolution(int dist[], int n, int parent[], int src)
             maxPath[1] = i;
             maxPath[2] = dist[i];
             biggestParent.push(src);
-            printPath(parent, i);
+            mountPath(parent, i);
         }
         
     }
@@ -108,7 +108,7 @@ int main()
     }
 
     cout << "Tavao: " << endl;
-    print_queue(biggestParent);
+    showOutputFormated(biggestParent);
     cout << maxPath[2] << endl;
     return 0;
 }

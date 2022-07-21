@@ -14,7 +14,7 @@ int size = 0;
 int maxPath[3] = {-1};
 queue<int> biggestParent;
 
-void print_queue(queue<int> q)
+void showOutputFormated(queue<int> q)
 {
     queue<int> temp = q;
     while (!temp.empty())
@@ -34,19 +34,18 @@ int minDistance(int dist[], bool sptSet[])
     return min_index;
 }
 
-void printPath(int parent[], int j)
+void mountPath(int parent[], int j)
 {
     if (parent[j] == -1)
         return;
-    printPath(parent, parent[j]);
+    mountPath(parent, parent[j]);
     biggestParent.push(j);
 }
 
-void printSolution(int dist[], int n, int parent[], int src)
+void mountSolution(int dist[], int n, int parent[], int src)
 {
     int aux;
     for (int i = 0; i < size; i++)
-    {
         if (dist[i] > maxPath[2])
         {
             queue<int> empty;
@@ -55,9 +54,8 @@ void printSolution(int dist[], int n, int parent[], int src)
             maxPath[1] = i;
             maxPath[2] = dist[i];
             biggestParent.push(src);
-            printPath(parent, i);
+            mountPath(parent, i);
         }
-    }
 }
 
 void dijkstra(int src)
@@ -65,84 +63,74 @@ void dijkstra(int src)
     int dist[size];
     bool sptSet[size] = {false};
     int parent[size];
-
     for (int k = 0; k < size; k++)
         parent[k] = -1;
-
     for (int i = 0; i < size; i++)
         dist[i] = INT_MAX;
-
     dist[src] = 0;
-
     for (int count = 0; count < size; count++)
     {
         int u = minDistance(dist, sptSet);
         sptSet[u] = true;
         for (int v = 0; v < size; v++)
-        {
             if (!sptSet[v] && adjacencyMatrix[u][v] && dist[u] != INT_MAX && dist[u] + adjacencyMatrix[u][v] < dist[v])
             {
                 if (v == u)
-                {
                     parent[v] = -1;
-                }
                 else
-                {
                     parent[v] = u;
-                }
                 dist[v] = dist[u] + adjacencyMatrix[u][v];
             }
-        }
     }
-    printSolution(dist, size, parent, src);
+    mountSolution(dist, size, parent, src);
 }
 
 int main(void)
 {
     ifstream myfile;
-    int maxLines = 0;
     bool isFirstLine = true;
+    vector<string> instances = {"n25.txt", "n50.txt", "n100.txt", "n250.txt", "n500.txt", "n750.txt", "n1000.txt"};
 
-    myfile.open("att48.txt");
-    if (myfile.good())
+    for (auto &instance : instances)
     {
-        while (myfile)
+        myfile.open("./instances/" + instance);
+        if (myfile.good())
         {
-            if (isFirstLine)
+            while (myfile)
             {
-                string sLine;
-                getline(myfile, sLine);
-                size = stoi(sLine);
-
-                adjacencyMatrix.resize(size);
-
-                for (auto &row : adjacencyMatrix)
+                if (isFirstLine)
                 {
-                    row.resize(size);
+                    string sLine;
+                    getline(myfile, sLine);
+                    size = stoi(sLine);
+                    adjacencyMatrix.resize(size);
+                    for (auto &row : adjacencyMatrix)
+                        row.resize(size);
+                    isFirstLine = false;
                 }
-                isFirstLine = false;
+                else
+                {
+                    int posX, posY, weight;
+                    int indexColumn = 0;
+                    myfile >> posX;
+                    myfile >> posY;
+                    myfile >> weight;
+                    adjacencyMatrix[posX][posY] = weight;
+                    adjacencyMatrix[posY][posX] = weight;
+                }
             }
-            else
-            {
-                int posX, posY, weight;
-
-                int indexColumn = 0;
-                myfile >> posX;
-                myfile >> posY;
-                myfile >> weight;
-
-                adjacencyMatrix[posX][posY] = weight;
-                adjacencyMatrix[posY][posX] = weight;
-            }
+            for (int i = 0; i < size; i++)
+                dijkstra(i);
+            cout << instance << endl;
+            showOutputFormated(biggestParent);
+            cout << maxPath[2] << endl;
         }
-
-        for (int i = 0; i < size; i++)
-            dijkstra(i);
-    
-        cout << "att48.txt" << endl;
-        print_queue(biggestParent);
-        cout << maxPath[2] << endl;
+        cout << endl;
+        isFirstLine = true;
+        vector<vector<int>> empty;
+        swap(adjacencyMatrix, empty);
+        for (int i = 0; i < 3; i++)
+            maxPath[i] = -1;
+        myfile.close();
     }
-
-    myfile.close();
 }
