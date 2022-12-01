@@ -56,9 +56,9 @@ int main()
     double tempo_simulacao = 36000;
     double tempo_decorrido = 0.0;
     double tempo_intervalo = 100.0;
-
     double intervalo_medio_chegada = 5;
-    double tempo_medio_servico = 4.75;
+    double entrada_ocupacao = 99.0; // ocupação em porcentagem
+    double tempo_medio_servico = (entrada_ocupacao / 100.0) * intervalo_medio_chegada;
 
     double chegada;
     double servico;
@@ -83,10 +83,9 @@ int main()
     */
 
     // srand(time(NULL));
-    srand(10000);
-
-    // printf("Informe o tempo de simulacao (segundos): ");
-    // scanf("%lF", &tempo_simulacao);
+    unsigned int semente = 1000;
+    srand(semente);
+    printf("%d \n", semente);
 
     // printf("Informe o intervalo medio entre chegadas (segundos): ");
     // scanf("%lF", &intervalo_medio_chegada);
@@ -190,25 +189,25 @@ int main()
             e_w_saida.no_eventos++;
         }
     }
-    e_w_chegada.soma_areas +=
-        (tempo_decorrido - e_w_chegada.tempo_anterior) * e_w_chegada.no_eventos;
+    // e_w_chegada.soma_areas +=
+    //     (tempo_decorrido - e_w_chegada.tempo_anterior) * e_w_chegada.no_eventos;
 
-    e_w_saida.soma_areas +=
-        (tempo_decorrido - e_w_saida.tempo_anterior) * e_w_saida.no_eventos;
+    // e_w_saida.soma_areas +=
+    //     (tempo_decorrido - e_w_saida.tempo_anterior) * e_w_saida.no_eventos;
 
-    double e_n_final = e_n.soma_areas / tempo_decorrido;
-    double e_w_final =
-        (e_w_chegada.soma_areas - e_w_saida.soma_areas) / e_w_chegada.no_eventos;
-    double lambda = e_w_chegada.no_eventos / tempo_decorrido;
+    // double e_n_final = e_n.soma_areas / tempo_decorrido;
+    // double e_w_final =
+    //     (e_w_chegada.soma_areas - e_w_saida.soma_areas) / e_w_chegada.no_eventos;
+    // double lambda = e_w_chegada.no_eventos / tempo_decorrido;
 
-    printf("E[N]: %lF\n", e_n_final);
-    printf("E[W]: %lF\n", e_w_final);
-    printf("lambda: %lF\n\n", lambda);
+    // printf("E[N]: %lF\n", e_n_final);
+    // printf("E[W]: %lF\n", e_w_final);
+    // printf("lambda: %lF\n\n", lambda);
 
-    printf("Erro de Little: %.20lF\n\n", e_n_final - lambda * e_w_final);
+    // printf("Erro de Little: %.20lF\n\n", e_n_final - lambda * e_w_final);
 
-    printf("Ocupacao: %lF.\n", soma_tempo_servico / maximo(tempo_decorrido, servico));
-    printf("Max fila: %ld.\n", max_fila);
+    // printf("Ocupacao: %lF.\n", soma_tempo_servico / maximo(tempo_decorrido, servico));
+    // printf("Max fila: %ld.\n", max_fila);
 
     return 0;
 }
