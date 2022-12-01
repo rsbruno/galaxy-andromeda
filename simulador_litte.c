@@ -13,9 +13,7 @@ typedef struct little_
 double aleatorio()
 {
     double u = rand() / ((double)RAND_MAX + 1);
-    // limitando entre (0,1]
     u = 1.0 - u;
-
     return (u);
 }
 
@@ -28,10 +26,9 @@ double minimo(double num1, double num2)
     return num2;
 }
 
-double minimothree(double num1, double num2, double num3)
+double minimo_entre_tres(double num1, double num2, double num3)
 {
     double min = minimo(minimo(num1, num2), num3);
-    // printf("min: %lF %lF %lF %lF\n", num1, num2, num3, min);
     return min;
 }
 
@@ -57,6 +54,7 @@ int main()
     double tempo_decorrido = 0.0;
     double tempo_intervalo = 100.0;
     double intervalo_medio_chegada = 5;
+    unsigned int semente = 100000;
     double entrada_ocupacao = 99.0; // ocupação em porcentagem
     double tempo_medio_servico = (entrada_ocupacao / 100.0) * intervalo_medio_chegada;
 
@@ -68,9 +66,6 @@ int main()
     unsigned long int fila = 0;
     unsigned long int max_fila = 0;
 
-    /**
-    Little
-    */
     little e_n;
     little e_w_chegada;
     little e_w_saida;
@@ -78,35 +73,17 @@ int main()
     inicia_little(&e_n);
     inicia_little(&e_w_chegada);
     inicia_little(&e_w_saida);
-    /**
-    Little -- fim
-    */
 
-    // srand(time(NULL));
-    unsigned int semente = 1000;
     srand(semente);
     printf("%d \n", semente);
 
-    // printf("Informe o intervalo medio entre chegadas (segundos): ");
-    // scanf("%lF", &intervalo_medio_chegada);
-
-    // printf("Informe o tempo medio de servico (segundos): ");
-    // scanf("%lF", &tempo_medio_servico);
-
-    // gerando o tempo de chegada da primeira requisicao.
     chegada = (-1.0 / (1.0 / intervalo_medio_chegada)) * log(aleatorio());
 
     while (tempo_decorrido <= tempo_simulacao)
     {
-        tempo_decorrido = !fila ? chegada : minimothree(chegada, servico, tempo_intervalo);
-
-        // chegada
-
+        tempo_decorrido = !fila ? minimo(chegada, tempo_intervalo) : minimo(chegada, minimo(servico, tempo_intervalo));
         if (tempo_decorrido == tempo_intervalo)
         {
-            // e_n.soma_areas +=
-            //     (tempo_decorrido - e_n.tempo_anterior) * e_n.no_eventos;
-
             e_w_chegada.soma_areas +=
                 (tempo_decorrido - e_w_chegada.tempo_anterior) * e_w_chegada.no_eventos;
 
@@ -129,7 +106,6 @@ int main()
             tempo_intervalo += 100.0;
             fila = 0;
             max_fila = 0;
-            // servico = 0;
             chegada = 0;
             tempo_decorrido = 0.0;
             soma_tempo_servico = 0.0;
@@ -140,7 +116,6 @@ int main()
         }
         else if (tempo_decorrido == chegada)
         {
-            // printf("Chegada em %lF.\n", tempo_decorrido);
             if (!fila)
             {
                 servico = tempo_decorrido + (-1.0 / (1.0 / tempo_medio_servico)) * log(aleatorio());
@@ -151,63 +126,32 @@ int main()
 
             chegada = tempo_decorrido + (-1.0 / (1.0 / intervalo_medio_chegada)) * log(aleatorio());
 
-            // little
             e_n.soma_areas +=
                 (tempo_decorrido - e_n.tempo_anterior) * e_n.no_eventos;
             e_n.tempo_anterior = tempo_decorrido;
             e_n.no_eventos++;
-
-            // e_w_chegada.tempo_anterior = tempo_decorrido;
-            // e_w_saida.tempo_anterior = tempo_decorrido;
-
             e_w_chegada.soma_areas +=
                 (tempo_decorrido - e_w_chegada.tempo_anterior) * e_w_chegada.no_eventos;
             e_w_chegada.tempo_anterior = tempo_decorrido;
             e_w_chegada.no_eventos++;
         }
         else
-        { // saida
-            // printf("Saida em %lF.\n", tempo_decorrido);
+        {
             fila--;
-
             if (fila)
             {
                 servico = tempo_decorrido + (-1.0 / (1.0 / tempo_medio_servico)) * log(aleatorio());
                 soma_tempo_servico += servico - tempo_decorrido;
             }
-
-            // little
             e_n.soma_areas +=
                 (tempo_decorrido - e_n.tempo_anterior) * e_n.no_eventos;
             e_n.tempo_anterior = tempo_decorrido;
-
             e_n.no_eventos--;
-
             e_w_saida.soma_areas +=
                 (tempo_decorrido - e_w_saida.tempo_anterior) * e_w_saida.no_eventos;
             e_w_saida.tempo_anterior = tempo_decorrido;
             e_w_saida.no_eventos++;
         }
     }
-    // e_w_chegada.soma_areas +=
-    //     (tempo_decorrido - e_w_chegada.tempo_anterior) * e_w_chegada.no_eventos;
-
-    // e_w_saida.soma_areas +=
-    //     (tempo_decorrido - e_w_saida.tempo_anterior) * e_w_saida.no_eventos;
-
-    // double e_n_final = e_n.soma_areas / tempo_decorrido;
-    // double e_w_final =
-    //     (e_w_chegada.soma_areas - e_w_saida.soma_areas) / e_w_chegada.no_eventos;
-    // double lambda = e_w_chegada.no_eventos / tempo_decorrido;
-
-    // printf("E[N]: %lF\n", e_n_final);
-    // printf("E[W]: %lF\n", e_w_final);
-    // printf("lambda: %lF\n\n", lambda);
-
-    // printf("Erro de Little: %.20lF\n\n", e_n_final - lambda * e_w_final);
-
-    // printf("Ocupacao: %lF.\n", soma_tempo_servico / maximo(tempo_decorrido, servico));
-    // printf("Max fila: %ld.\n", max_fila);
-
     return 0;
 }
