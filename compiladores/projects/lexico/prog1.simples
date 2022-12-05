@@ -1,0 +1,14 @@
+programa teste1
+inteiro a b //variaveis do programa
+inicio
+leia a
+leia b
+enquanto a > b faca
+escreva a
+a <- a - 1
+fimenquanto
+/*
+    este é um cmentario
+    esta é uma nova linha de comentario
+*/
+fimprograma
