@@ -1,0 +1,160 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    border: solid 1px #aeaeae;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    margin-right: 3rem;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: ease 300ms;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    padding: 0 12px;
+    text-transform: capitalize;
+    transition: ease 300ms;
+}
+
+header a:hover,
+nav ul li:hover {
+    cursor: pointer;
+    color: #aeaeae;
+}
+
+.nav-mobile {
+    display: none;
+}
+
+.sc-main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.sc-form {
+    max-width: 1100px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sc-form h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.fm-login {
+    width: 300px
+}
+
+.dv-wrapper-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.dv-wrapper-input span {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    color: tomato;
+}
+
+.dv-wrapper-input span:last-child {
+    margin-bottom: 4px;
+}
+
+.dv-content-input {
+    padding: 0 0 2px 0;
+    display: flex;
+}
+
+.dv-content-input label {
+    width: 80px;
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.ip-username {
+    width: 100%;
+    font-size: .8rem;
+    padding: 4px 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    border-radius: 2px;
+    border: solid 1px #aeaeae;
+}
+
+.dv-content-input input:focus {
+    outline: none;
+}
+
+.dv-pass-eye {
+    width: 100%;
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.ip-password {
+    width: 100%;
+    font-size: .8rem;
+    padding: 4px 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    border-radius: 2px;
+    border: solid 1px #aeaeae;
+}
+
+.dv-pass-eye button {
+    border: none;
+    margin-left: 2px;
+    border: solid 1px #aeaeae;
+    background: transparent;
+    border-radius: 2px;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 6px 32px;
+    border-radius: 3px;
+    margin-top: 12px;
+}
+
+footer {
+    padding: 0 25px;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 15px;
+    padding-top: 12px;
+    width: 100vw;
+    border: solid 1px #aeaeae;
+}
+
+footer strong {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+}

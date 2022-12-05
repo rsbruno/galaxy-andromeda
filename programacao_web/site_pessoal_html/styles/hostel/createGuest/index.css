@@ -1,0 +1,157 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    border: solid 1px #aeaeae;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    margin-right: 3rem;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: ease 300ms;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    padding: 0 12px;
+    text-transform: capitalize;
+    transition: ease 300ms;
+}
+
+header a:hover,
+nav ul li:hover {
+    cursor: pointer;
+    color: #aeaeae;
+}
+
+.nav-mobile {
+    display: none;
+}
+
+body {
+    overflow: hidden;
+}
+
+.sc-main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fm-create {
+    width: 100vw;
+    margin: 0 35px;
+}
+
+.fm-create h3 {
+    font-family: "Rajdhani";
+    font-weight: 600;
+}
+
+.sc-contact,
+.sc-name,
+.sc-location {
+    width: 100%;
+    display: flex;
+    margin-top: 8px;
+}
+
+.dv-content-input {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.dv-adreess {
+    margin-top: 8px;
+}
+
+.dv-content-input:first-child {
+    margin-right: 8px;
+}
+
+.dv-content-input input {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin-right: 8px;
+    padding: 8px 0 8px 4px;
+    font-family: "Rajdhani";
+    font-weight: 600;
+    border: solid 1px #aeaeae;
+}
+
+.dv-content-input input:focus {
+    outline: none;
+    border: solid 1px #ededed;
+}
+
+.dv-content-input span {
+    color: tomato;
+    font-family: "Rajdhani";
+    font-weight: 500;
+}
+
+.dv-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+
+.dv-controls input[type="submit"] {
+    background: #ededed;
+    border: solid 1px #aeaeae;
+    padding: 8px 24px;
+    font-family: "Rajdhani";
+    font-weight: 600;
+    border-radius: 2px;
+    transition: ease 500ms;
+}
+
+.dv-controls input[type="submit"]:hover {
+    background: #aeaeae;
+    cursor: pointer;
+}
+
+.dv-controls a {
+    color: #aeaeae;
+    transition: ease 500ms;
+}
+
+.dv-controls a:hover {
+    color: #000;
+}
+
+footer {
+    padding: 0 25px;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 15px;
+    padding-top: 12px;
+    width: 100vw;
+    border: solid 1px #aeaeae;
+}
+
+footer strong {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+}

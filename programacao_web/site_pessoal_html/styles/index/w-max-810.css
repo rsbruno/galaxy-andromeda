@@ -1,0 +1,69 @@
+@media screen and (max-width: 810px) {
+    .hero {
+        overflow: hidden;
+    }
+    .hero::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("../../assets/avatar-hero-one.png");
+        background-position-x: right;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        z-index: 0;
+    }
+    .container-hero {
+        z-index: 2;
+    }
+    .container-texts {
+        max-width: 75%;
+    }
+    .container-avatar {
+        width: 0;
+        display: none;
+    }
+    .hero-three {
+        height: auto;
+    }
+    .mockups {
+        flex-direction: column;
+    }
+    .mockups div {
+        margin: 0 auto;
+    }
+    .mockups div:nth-child(2) {
+        margin-top: 20px;
+    }
+    .hero-four {
+        height: 100vh;
+        background-position-x: right;
+    }
+    .hobbie {
+        width: 100%;
+        padding: 10%;
+    }
+    .hero-four::after {
+        opacity: .15;
+    }
+    .hero-footer .container-hero main {
+        flex-direction: column;
+    }
+    .hero-footer .container-hero main div {
+        width: 100%;
+    }
+    .hero-footer .container-hero main>div:first-child {
+        margin-bottom: 25px;
+    }
+    .signature {
+        margin-top: 17px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,101 @@
+@media screen and (max-width: 720px) {
+    .nav-mobile {
+        display: block;
+        position: relative;
+    }
+    .nav-mobile button {
+        background: var(--primary-red);
+        padding: 8px 8px;
+        border-color: transparent;
+        border-radius: 6px;
+    }
+    #menu-mobile {
+        color: var(--text-highlight);
+    }
+    .nav-mobile button:focus #mobile {
+        transform: translateX(0);
+    }
+    .nav-mobile div {
+        background-color: var(--primary-red);
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100vh);
+        transition: ease var(--animations);
+        padding: 14px 4px;
+        border-radius: 6px;
+    }
+    .mobile {
+        text-align: right;
+    }
+    .mobile nav ul li a {
+        color: var(--text-highlight);
+        padding: 5px 0;
+    }
+    .mobile nav ul li a:hover {
+        color: var(--text-highlight);
+    }
+    .container-texts {
+        max-width: 100%;
+    }
+    .navigator>nav {
+        display: none;
+    }
+    .container-texts {
+        align-items: center;
+    }
+    .container-texts h6::before {
+        display: none;
+    }
+    .container-texts h6::after {
+        content: "";
+        display: block;
+        width: 60%;
+        height: 3px;
+        background: var(--primary-red);
+        margin: 0 auto;
+    }
+    .container-texts h1 {
+        text-align: center;
+    }
+    .container-texts p {
+        text-align: center;
+    }
+    .hero-two {
+        height: auto;
+        padding-bottom: 20px;
+    }
+    .container-hero div h2::after {
+        width: 50%;
+    }
+    .mockups {
+        flex-direction: column;
+    }
+    .hero-four {
+        height: 100vh;
+        background-position-x: right;
+    }
+    .hero-four::after {
+        opacity: .15;
+    }
+    .hobbie {
+        width: 100%;
+        padding: 0;
+    }
+    .hero-footer .container-hero main {
+        flex-direction: column;
+    }
+    .hero-footer .container-hero main div {
+        width: 100%;
+    }
+    .hero-footer .container-hero main>div:first-child {
+        margin-bottom: 25px;
+    }
+    .signature {
+        margin-top: 17px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
