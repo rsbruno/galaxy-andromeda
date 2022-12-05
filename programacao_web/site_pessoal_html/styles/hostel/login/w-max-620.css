@@ -1,0 +1,60 @@
+@media screen and (max-width: 620px) {
+    .link-desktop,
+    .nav-desktop {
+        display: none;
+    }
+    header {
+        display: flex;
+        justify-content: flex-end;
+        padding: 12px 0;
+    }
+    .nav-mobile {
+        display: block;
+        position: relative;
+        margin-right: 25px;
+    }
+    .nav-mobile button {
+        background: transparent;
+        padding: 8px 8px;
+        border: solid 1px #aeaeae;
+        border-radius: 3px;
+    }
+    #menu-mobile {
+        color: #000;
+    }
+    .nav-mobile button:focus #mobile {
+        transform: translateX(0);
+    }
+    .nav-mobile div {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100vh);
+        transition: ease 800ms;
+        border-radius: 6px;
+    }
+    .mobile {
+        text-align: right;
+    }
+    .mobile nav {
+        background: #fafafa;
+        padding: 0 22px;
+        border-radius: 4px;
+        border: solid 1px #aeaeae;
+    }
+    .mobile nav ul li {
+        color: #000;
+        padding: 5px 0;
+    }
+    .mobile nav ul li:hover {
+        color: #aeaeae;
+    }
+    footer {
+        padding-bottom: 0;
+        padding-top: 0;
+        width: auto;
+    }
+    footer strong {
+        text-align: center;
+    }
+}

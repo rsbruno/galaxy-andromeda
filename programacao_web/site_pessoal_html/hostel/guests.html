@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/hostel/guests/index.css">
+    <title>Hostel - Guests</title>
+</head>
+
+<body>
+    <section class="sc-body">
+        <header>
+            <div>
+                <span>show</span>
+                <select id="counts" onchange="showDataCount()">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <div>
+                <span>pesquisar</span>
+                <input type="text" placeholder="Pesquisar" onkeyup="search(this)">
+            </div>
+
+        </header>
+
+        <main>
+            <section class="sc-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teste">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <footer>
+            <div class="dv-footer-table">
+                <div>
+                    <span>
+                        showing
+                        <strong id='atual-page'>1</strong>
+                        to
+                        <strong id='limit'>10</strong>
+                        of
+                        <strong id="total">23</strong>
+                        entries
+                    </span>
+                </div>
+                <div class="dv-wrapper-constrols">
+                    <button onclick="previous();">Previous</button>
+                    <div class="constrols" id="controls"></div>
+                    <button onclick="next();">Next</button>
+                </div>
+            </div>
+        </footer>
+
+    </section>
+
+</body>
+
+<script src="../scripts/table.js"></script>
+<script src="../scripts/pagination.js"></script>
+<script src="../scripts/guests.js"></script>
+
+</html>

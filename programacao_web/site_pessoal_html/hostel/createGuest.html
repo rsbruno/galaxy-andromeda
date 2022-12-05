@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/hostel/createGuest/index.css">
+    <link rel="stylesheet" href="../styles/hostel/createGuest/w-max-620.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
+    <title>Hostel - Novo</title>
+</head>
+
+<body>
+    <section class="sc-main">
+        <header>
+            <nav class="nav-desktop">
+                <ul>
+                    <li>home</li>
+                    <li>customers</li>
+                    <li>rooms</li>
+                    <li>reservations</li>
+                    <li>contact</li>
+                </ul>
+            </nav>
+
+            <a href="#" class="link-desktop">login</a>
+
+            <div class="nav-mobile">
+                <button>
+                    <i id="menu-mobile" class="fas fa-bars"></i>
+                    <div class="mobile" id="mobile">
+                        <nav>
+                            <ul>
+                                <li>home</li>
+                                <li>customers</li>
+                                <li>rooms</li>
+                                <li>reservations</li>
+                                <li>contact</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </button>
+
+            </div>
+        </header>
+
+        <form action="#" class="fm-create">
+            <h3>Create Guest</h3>
+            <section class="sc-name">
+                <div class="dv-content-input" id="ft-name">
+                    <input type="text" placeholder="First Name" id="firstName" class="ip-firstName">
+                </div>
+                <div class="dv-content-input" id="lt-name">
+                    <input type="text" placeholder="Last Name" id="lastName" class="ip-lastName">
+                </div>
+            </section>
+
+            <section class="sc-contact">
+                <div class="dv-content-input" id="email">
+                    <input type="text" placeholder="Email Address" id="emailAdress" class="ip-emailAdress">
+                </div>
+                <div class="dv-content-input" id="phone">
+                    <input type="text" placeholder="Phone Number" id="phoneNumber" class="ip-phoneNumber">
+                </div>
+            </section>
+
+            <section class="sc-adress">
+                <div class="dv-content-input dv-adreess" id="id-address">
+                    <input type="text" placeholder="Address" id="address" class="ip-address">
+                </div>
+                <section class="sc-location">
+                    <div class="dv-content-input" id="ct-country">
+                        <input type="text" placeholder="Country" id="country" class="ip-country">
+                    </div>
+                    <div class="dv-content-input" id="id-state">
+                        <input type="text" placeholder="State" id="state" class="ip-state">
+                    </div>
+                </section>
+            </section>
+
+            <div class="dv-controls">
+                <input type="submit" value="Save" onclick="validateForm();">
+                <a href="#">Return to all guests</a>
+            </div>
+        </form>
+
+
+
+        <footer>
+            <strong>
+                Sparkling Water Hostel - Sparkling water main st.100, Caxambu-MG
+            </strong>
+        </footer>
+    </section>
+</body>
+
+<script src="../scripts/utils/errors.js"></script>
+<script src="../scripts/create-form.js"></script>
+
+</html>
