@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.containerControlls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .inactive {
+    cursor: not-allowed;
+  }
+}
+
+.containerCounters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controllLeft {
+  margin-right: 25px;
+  background: red;
+}

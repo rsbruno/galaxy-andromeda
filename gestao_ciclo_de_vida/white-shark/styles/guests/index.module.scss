@@ -1,0 +1,97 @@
+.listContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .listContent {
+    width: 100%;
+    max-width: 900px;
+    height: 200px;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 700px;
+      h2 {
+        font-size: 2rem;
+      }
+      a {
+        color: blue;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .listProps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px #ddd;
+    margin-bottom: 7px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    div {
+      select {
+        margin: 0 12px;
+      }
+    }
+    .containerInput {
+      label {
+        margin-right: 7px;
+      }
+      input {
+        height: 28px;
+        padding: 5px;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    thead {
+      text-align: left;
+
+      tr {
+        font-size: 1.1rem;
+        th {
+          padding: 0 7px;
+        }
+        .id {
+          width: 60px;
+          padding: 0 14px;
+        }
+        .phone {
+          width: 200px;
+        }
+        .first {
+          width: 100px;
+        }
+        .last {
+          width: 100px;
+        }
+        .email {
+          width: 200px;
+        }
+      }
+    }
+    tbody {
+      text-align: left;
+      tr {
+        background: #ededed;
+        height: 40px;
+        font-weight: 400;
+        &:nth-child(2n) {
+          background: #fff;
+        }
+        td {
+          font-size: 1.1rem;
+          &:first-child {
+            color: blue;
+            padding-left: 7px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
